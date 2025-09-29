@@ -1,15 +1,15 @@
 {
-    "name": "custom/discussions-item",
-    "description": "Discussions Item for Flarum",
+    "name": "weixinxin1994/flarum-custom-discussions-item",
+    "description": "Enhanced Discussions List Item for Flarum - Add author avatars, likes count, and reply user avatars",
     "keywords": [
-        "flarum", "widget", "discussions", "item"
+        "flarum", "extension", "discussions", "item", "avatar", "likes", "replies"
     ],
     "type": "flarum-extension",
     "license": "MIT",
-    "homepage": "https://github.com/custom/discussions-item",
+    "homepage": "https://github.com/Weixinxin1994/flarum-custom-discussions-item",
     "support": {
-        "issues": "https://github.com/custom/discussions-item/issues",
-        "source": "https://github.com/custom/discussions-item"
+        "issues": "https://github.com/Weixinxin1994/flarum-custom-discussions-item/issues",
+        "source": "https://github.com/Weixinxin1994/flarum-custom-discussions-item"
     },
     "require": {
         "flarum/core": "^1.0.0",
@@ -20,8 +20,8 @@
     },
     "authors": [
         {
-            "name": "Custom Developer",
-            "email": "developer@example.com",
+            "name": "Weixin",
+            "email": "903386832@qq.com",
             "role": "Developer"
         }
     ],
