@@ -184,6 +184,19 @@
     margin-right: 8px;
     display: inline-block;
     
+    // 兼容 discussion-thumbnail 插件
+    &.with-thumbnail {
+      // 当存在 discussion-thumbnail 插件时，调整样式避免冲突
+      position: relative;
+      z-index: 1;
+      
+      .custom-avatar {
+        // 确保我们的头像不会被插件的样式覆盖
+        border: 2px solid #fff !important;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2) !important;
+      }
+    }
+    
     img {
       border-radius: 50%;
       border: 2px solid #fff;

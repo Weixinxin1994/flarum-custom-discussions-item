@@ -25,6 +25,16 @@ app.initializers.add('custom/discussions-item', () => {
     items.add('authorAvatar', this.authorAvatarView(), 1);
   });
 
+  // 兼容 discussion-thumbnail 插件
+  extend(DiscussionListItem.prototype, 'view', function (vdom) {
+    // 检查是否有 discussion-thumbnail 插件
+    if (app.forum.attribute('fof-discussion-thumbnail.link_to_discussion') !== undefined) {
+      // 如果存在 discussion-thumbnail 插件，我们需要调整我们的头像显示
+      // 避免与插件的 DOM 修改冲突
+      this.hasDiscussionThumbnail = true;
+    }
+  });
+
   // 添加作者头像显示方法
   DiscussionListItem.prototype.authorAvatarView = function () {
     const discussion = this.attrs.discussion;
@@ -45,9 +55,16 @@ app.initializers.add('custom/discussions-item', () => {
       return null;
     }
     
+    // 如果存在 discussion-thumbnail 插件，使用不同的样式避免冲突
+    const hasThumbnail = this.hasDiscussionThumbnail || 
+                        app.forum.attribute('fof-discussion-thumbnail.link_to_discussion') !== undefined;
+    
     return (
-      <div className="DiscussionListItem-author-avatar">
-        {avatar(author, { size: avatarSize })}
+      <div className={`DiscussionListItem-author-avatar ${hasThumbnail ? 'with-thumbnail' : ''}`}>
+        {avatar(author, { 
+          size: avatarSize,
+          className: hasThumbnail ? 'custom-avatar' : ''
+        })}
       </div>
     );
   };
