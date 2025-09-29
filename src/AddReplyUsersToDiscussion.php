@@ -71,7 +71,7 @@ class AddReplyUsersToDiscussion
                             }
                         } else {
                             // 使用默认头像
-                            $avatarUrl = app('flarum.config')['url'] . '/assets/avatars/default.png';
+                            $avatarUrl = '';
                         }
                         
                         $replyUsers[] = [

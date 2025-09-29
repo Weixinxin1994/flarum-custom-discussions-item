@@ -5,6 +5,7 @@ import Discussion from 'flarum/common/models/Discussion';
 import avatar from 'flarum/common/helpers/avatar';
 import icon from 'flarum/common/helpers/icon';
 import abbreviateNumber from 'flarum/common/utils/abbreviateNumber';
+import stringToColor from 'flarum/common/utils/stringToColor';
 
 app.initializers.add('custom/discussions-item', () => {
   console.log('custom/discussions-item');
@@ -138,7 +139,7 @@ app.initializers.add('custom/discussions-item', () => {
     const displayUsers = replyUsers.slice(0, maxAvatars);
 
     return (
-      <>
+      <div>
         <span className="reply-avatars-label">
           {app.translator.trans('custom-discussions-item.forum.recent_replies')}:
         </span>
@@ -147,13 +148,22 @@ app.initializers.add('custom/discussions-item', () => {
             // 创建用户对象以使用Flarum的avatar辅助函数
             const userModel = {
               id: () => user.id,
-              displayName: () => user.displayName,
               username: () => user.username,
+              displayName: () => user.displayName || user.username,
               avatarUrl: () => user.avatarUrl,
+              color: () => {
+                // 如果有头像URL，返回空字符串让Flarum计算颜色
+                if (user.avatarUrl) {
+                  return '';
+                }
+                // 否则基于用户名生成颜色
+                const name = user.displayName || user.username;
+                return '#' + stringToColor(name);
+              }
             };
             
             return (
-              <span key={index} className="reply-avatar" title={user.displayName}>
+              <span key={index} className="reply-avatar" title={user.displayName || user.username}>
                 {avatar(userModel, { size: avatarSize })}
               </span>
             );
@@ -164,7 +174,7 @@ app.initializers.add('custom/discussions-item', () => {
             </span>
           )}
         </div>
-      </>
+      </div>
     );
   };
 });

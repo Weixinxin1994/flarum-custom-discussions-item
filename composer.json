@@ -1,6 +1,7 @@
 {
     "name": "weixinxin1994/flarum-custom-discussions-item",
     "description": "Enhanced Discussions List Item for Flarum - Add author avatars, likes count, and reply user avatars",
+    "version": "1.0.0",
     "keywords": [
         "flarum", "extension", "discussions", "item", "avatar", "likes", "replies"
     ],
