@@ -1,7 +1,7 @@
 {
     "name": "weixinxin1994/flarum-custom-discussions-item",
     "description": "Enhanced Discussions List Item for Flarum - Add author avatars, likes count, and reply user avatars",
-    "version": "1.0.0",
+    "version": "1.0.2",
     "keywords": [
         "flarum", "extension", "discussions", "item", "avatar", "likes", "replies"
     ],
@@ -13,8 +13,7 @@
         "source": "https://github.com/Weixinxin1994/flarum-custom-discussions-item"
     },
     "require": {
-        "flarum/core": "^1.0.0",
-        "afrux/forum-widgets-core": "^0.1.7"
+        "flarum/core": "^1.0.0"
     },
     "require-dev": {
         "flarum/testing": "^1.0.0"
@@ -37,12 +36,9 @@
         }
     },
     "extra": {
-        "branch-alias": {
-            "dev-main": "0.1.x-dev"
-        },
         "flarum-extension": {
-            "title": "Discussions Item",
-            "category": "forum-widget",
+            "title": "Custom Discussions Item",
+            "category": "feature",
             "icon": {
                 "name": "fas fa-images",
                 "backgroundColor": "#4a90e2",
