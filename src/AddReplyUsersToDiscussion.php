@@ -76,7 +76,6 @@ class AddReplyUsersToDiscussion
                         
                         $replyUsers[] = [
                             'id' => $user->id,
-                            'displayName' => $user->display_name,
                             'username' => $user->username,
                             'avatarUrl' => $avatarUrl,
                         ];
